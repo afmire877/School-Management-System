@@ -6,10 +6,13 @@ var express = require('express'),
 app.use(bodyParser.urlencoded({ extended: true}));
 app.set('view engine', 'ejs');
 
+//Serving Static Files
+app.use(express.static('public'));
 
 // Setting up Mongodb Connection
 mongoose.connect("mongodb://localhost:27017/school-system");
 
+// Setting up Schema 
 var studentSchema = new mongoose.Schema({
 	name: String,
 	year: Number,
@@ -81,6 +84,12 @@ app.get('/', function( req, res){
 	});
 });
 
+
+//Create Route
+
+app.get('/student/new', function(req, res){
+	res.render('pages/new.ejs')
+})
 
 //Listening for Port
 

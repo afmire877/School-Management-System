@@ -3,16 +3,26 @@
 <head>
 	<title>Dashboard</title>
 	<link rel="stylesheet" type="text/css" href="dashboard.css">
+	<% include ../partials/head.ejs %>
 </head>
 <body>
-	<nav>
-		<ul>
-			<li><a href="">Dashboard</a></li>
-			<li><a href="">Classes</a></li>
-			<li><a href="">Attendance</a></li>
-			<li><a href="">Fees</a></li>
-		</ul>
-	</nav>
+	<% include ../partials/header.ejs %>
+	<div class="container">
+		<nav>
+			<ul>
+				<li><a href="/">Dashboard</a></li>
+				<li><a href="">Classes</a></li>
+				<li><a href="">Attendance</a></li>
+				<li><a href="">Fees</a></li>
+			</ul>
+		</nav>
+	</div>
 
+	<div class="main">
+		<div class="wrapper">
+			<h3><a href="/student/new">Add new Student</a></h3>
+		</div>
+	</div>
+	<% include ../partials/footer.ejs %>
 </body>
 </html>
