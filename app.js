@@ -91,6 +91,31 @@ app.get('/student/new', function(req, res){
 	res.render('pages/new.ejs')
 })
 
+
+app.post("/student", function(req , res){
+	console.log(req.body)
+	var name = req.body.name;
+	var year = req.body.year;
+	var classname = req.body.classname;
+	var gender = req.body.gender;
+	var dateOfBirth = req.body.dateOfBirth;
+	var neighborhood = req.body.neighborhood;
+	var studentObj = { name: name, classname : classname , gender :gender, dateOfBirth : dateOfBirth , neighborhood : neighborhood };
+	Student.create(studentObj , function(err , student){
+		if(err){
+			console.log("Error");
+			console.log(err);
+		}else {
+			console.log("It has been added")
+			console.log(student);
+		}
+	});
+	res.redirect("/");
+});
+
+
+
+
 //Listening for Port
 
 app.listen(5000);
