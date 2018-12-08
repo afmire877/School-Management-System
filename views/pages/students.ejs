@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>All Students</title>
+	<link rel="stylesheet" type="text/css" href="../students.css">
+</head>
+<body>
+	<% include ../partials/header.ejs %>
+
+	<div class="main">
+		<div class="wrapper">
+			<table>
+				<thead>
+					<tr>
+						<td>Name</td>
+						<td>Gender</td>
+						<td>Year of Birth</td>
+						<td>Mother's Name</td>
+						<td>Mother's Number</td>
+					</tr>
+				</thead>
+				<tbody>
+					<% for(var i = 0; i <= students.length -1 ; i++) { %> 
+					<tr>
+						<td><%= students[i].name %></td>
+						<td><%= students[i].gender %></td>
+						<td><%= students[i].dateOfBirth %></td>
+						<td><%= students[i].parentInfo.mother.name %></td>
+						<td><%= students[i].parentInfo.mother.phoneNumber %></td>
+					</tr>
+					<% } %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+</body>
+</html>

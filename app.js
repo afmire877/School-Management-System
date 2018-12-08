@@ -48,14 +48,7 @@ var Student = mongoose.model('student', studentSchema);
 
 // Routes 
 app.get('/', function( req, res){
-	Student.find({}, function(err, students){
-		if(err){
-			console.log(err)
-		}else {
-			console.log('found all')
-			res.render( 'pages/dashboard' , {students: students})
-		}
-	});
+	res.render('pages/dashboard.ejs')
 });
 
 
@@ -66,8 +59,16 @@ app.get('/student/new', function(req, res){
 })
 
 app.get('/students/all', function(req, res){
-	res.send('All students apges')
-	res.render('pages/students.ejs')
+	
+	Student.find({}, function(err, students){
+		if(err){
+			console.log(err)
+		}else {
+			console.log('found all')
+			
+			res.render('pages/students.ejs', {students : students})
+		}
+	});
 })
 
 app.post("/student", function(req , res){
