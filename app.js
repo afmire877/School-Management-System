@@ -28,7 +28,12 @@ var studentSchema = new mongoose.Schema({
 		father : {
 			name: String,
 			phoneNumber: Number
-		}
+		},
+		// Guardian : {
+		// 	name: String,
+		// 	phoneNumber: Number
+		// 	relations: String,
+		// }
 	},
 	previousSchool : String,
 	attendance : {},
@@ -38,37 +43,6 @@ var studentSchema = new mongoose.Schema({
 
 // Model
 var Student = mongoose.model('student', studentSchema);
-
-// Dummy Data
-
-
-// Student.insert({
-// 	name: "Jamac Siyaad",
-// 	year: 8,
-// 	class: "8A",
-// 	gender: "female",
-// 	dateOfBirth: 1998,
-// 	neighborhood: "daame",
-// 	parentInfo : {
-// 		mother : {
-// 			name: "xaawo",
-// 			phoneNumber: 0633663937,
-// 		},
-// 		father : {
-// 			name: "siyaad",
-// 			phoneNumber: 0634265343
-// 		}
-// 	},
-// 	previousSchool : "Gol Khaatumo",
-// },function(err, student){
-// 	if(err){
-// 		console.log("Error");
-// 		console.log(err);
-// 	}else{
-// 		console.log("It has been created");
-// 		console.log(student);
-// 	}
-// })
 
 
 
@@ -91,16 +65,32 @@ app.get('/student/new', function(req, res){
 	res.render('pages/new.ejs')
 })
 
+app.get('/students/all', function(req, res){
+	res.send('All students apges')
+	res.render('pages/students.ejs')
+})
 
 app.post("/student", function(req , res){
-	console.log(req.body)
 	var name = req.body.name;
 	var year = req.body.year;
 	var classname = req.body.classname;
 	var gender = req.body.gender;
 	var dateOfBirth = req.body.dateOfBirth;
 	var neighborhood = req.body.neighborhood;
-	var studentObj = { name: name, classname : classname , gender :gender, dateOfBirth : dateOfBirth , neighborhood : neighborhood };
+	var motherName = req.body.motherName;
+	var fatherName = req.body.fatherName;
+	var fatherNumber = req.body.fatherPhone;
+	var motherNumber = req.body.motherPhone;
+	var studentObj = { name: name, class : classname , gender :gender, dateOfBirth : dateOfBirth , neighborhood : neighborhood , parentInfo : {
+		mother : {
+			name: motherName,
+			phoneNumber: motherNumber,
+		},
+		father : {
+			name: fatherName,
+			phoneNumber: fatherNumber,
+		}
+	} };
 	Student.create(studentObj , function(err , student){
 		if(err){
 			console.log("Error");

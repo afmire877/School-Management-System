@@ -5,11 +5,12 @@
 	<link rel="stylesheet" type="text/css" href="../new.css">
 </head>
 <body>
-	<div class="container">
+	<div class="sidenav">
 		<nav>
 			<ul>
 				<li><a href="/">Dashboard</a></li>
 				<li><a href="">Classes</a></li>
+				<li><a href="/students/all">Students</a></li>
 				<li><a href="">Attendance</a></li>
 				<li><a href="">Fees</a></li>
 			</ul>
@@ -18,29 +19,48 @@
 	<div class="main">
 		<div class="wrapper">
 
-			<h2>New Student -Info</h2>
+			<h2>New Student's Details</h2>
 			<form action="/student" method="POST">
-				<input type="file" onchange="previewFile()"><br>
-				<img src="../placeholder.jpg" height="200" alt="Image preview...">
+				<div style="display: none;" >
+					<input type="file" onchange="previewFile()"><br>
+					<img src="../placeholder.jpg" height="200" alt="Image preview..." />
+				</div>
+				<div id="student-photo" >
+					<input type="file" onchange="previewFile()"><br>
+					<img src="../placeholder.jpg" height="200" alt="Image preview..." />
+				</div>
 				<div id="studentInfo">
 					<input type="text" name="name" placeholder="Full Name">
 					<input type="number" name="year" placeholder="Year Group">
 					<input type="text" name="classname" placeholder="Class">
+
+					<input type="number" name="dateOfBirth" placeholder="Year of Birth">
+					<input type="text" name="neighborhood" placeholder="neighborhood (Area)">
+					<br>
 					<label for="gender">Gender: </label>
 					<select name="gender">
 						<option>Male</option>
 						<option>Female</option>
-					</select>
-					<input type="number" name="dateOfBirth" placeholder="Year of Birth">
-					<input type="text" name="neighborhood" placeholder="neighborhood (Area)">	
-					<button type="submit">Submit</button>
+					</select>	
+			
 				</div>
-				<h2>Parents info</h2>
+					
 					<div id="parentInfo">
+						<div id="circle">1</div>
+						<h2>Parent's Details</h2>
+						<div id="Mother">
 						<input type="text" name="motherName" placeholder="Mother's Full Name">
-						<input type="number" name="phoneNumber" placeholder="Mobile Number">
+						<input type="number" name="motherPhone" placeholder="Mobile Number">
+						</div>
+						<div id="father">
+						<input type="text" name="fatherName" placeholder="father's Full Name">
+						<input type="number" name="fatherPhone" placeholder="Mobile Number">
+						</div>
+
+
 							
 					</div>
+					<button type="submit">Submit</button>
 
 			</form>
 		</div>
