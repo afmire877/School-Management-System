@@ -49,3 +49,45 @@ nav ul li a {
 	margin-left: 30px;
 	margin-right: 30px;
 }
+
+
+/*Table Styling */
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th, td {
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+thead {
+	background-color: rgba(2, 2, 255, 0.54); 
+
+}
+th {
+	padding:10px;
+}
+td {
+	padding: 7px 7px;
+}
+
+input[id="search"] {
+	font-family: 'Montserrat';
+    float: right;
+    width: 300px;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+select {
+	font-family: 'Montserrat';
+	float: right;
+    padding: 9px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+    border-right: none;
+}
+}

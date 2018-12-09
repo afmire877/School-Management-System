@@ -14,7 +14,7 @@ mongoose.connect("mongodb://localhost:27017/school-system");
 
 // Setting up Schema 
 var studentSchema = new mongoose.Schema({
-	name: String,
+	name: String ,
 	year: Number,
 	class: String,
 	gender: String,
@@ -51,7 +51,7 @@ app.get('/', function( req, res){
 	res.render('pages/dashboard.ejs')
 });
 
-
+// Student.createIndex( { name: "text" } );
 //Create Route
 
 app.get('/student/new', function(req, res){
@@ -70,6 +70,10 @@ app.get('/students/all', function(req, res){
 		}
 	});
 })
+app.post('/students/all/search', function(req, res){
+	
+	Student.find( { $text: { $search: req.body.search } } )
+});
 
 app.post("/student", function(req , res){
 	var name = req.body.name;

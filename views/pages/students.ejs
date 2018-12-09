@@ -3,28 +3,42 @@
 <head>
 	<title>All Students</title>
 	<link rel="stylesheet" type="text/css" href="../students.css">
+	<% include ../partials/head.ejs %>
 </head>
 <body>
 	<% include ../partials/header.ejs %>
 
 	<div class="main">
 		<div class="wrapper">
-			<table>
+
+
+			<h1>All Student</h1>
+
+				<input type="text" id="search" onkeyup="myFunction()" placeholder="Search for names..">
+				<select>
+					<option>Name</option>
+					<option>Class</option>
+					<option>Mother's Name</option>
+				</select>
+
+			<table id="myTable">
 				<thead>
-					<tr>
-						<td>Name</td>
-						<td>Gender</td>
-						<td>Year of Birth</td>
-						<td>Mother's Name</td>
-						<td>Mother's Number</td>
+					<tr id="hacker-list">
+						<th class="name">Name</th>
+						<th class="gender">Gender</td>
+						<th class="class">Class</th>
+						<th class="yearOfBirth">Year of Birth</th>
+						<th class="MotherName">Mother's Name</th>
+						<th class="MotherNumber">Mother's Number</th>
 					</tr>
 				</thead>
 				<tbody>
 					<% for(var i = 0; i <= students.length -1 ; i++) { %> 
 					<tr>
 						<td><%= students[i].name %></td>
-						<td><%= students[i].gender %></td>
+						<td><%= students[i].gender %></td><td><%= students[i].class %></td>
 						<td><%= students[i].dateOfBirth %></td>
+
 						<td><%= students[i].parentInfo.mother.name %></td>
 						<td><%= students[i].parentInfo.mother.phoneNumber %></td>
 					</tr>
@@ -33,6 +47,31 @@
 			</table>
 		</div>
 	</div>
-	
+	<script>
+	function myFunction() {
+	  // Declare variables 
+	  var input, filter, table, tr, td, i, txtValue, param;
+	  input = document.getElementById("search");
+	  filter = input.value.toUpperCase();
+	  table = document.getElementById("myTable");
+	  tr = table.getElementsByTagName("tr");
+	  param = document.getElementsByTagName('select');
+
+	  // Loop through all table rows, and hide those who don't match the search query
+
+
+	  for (i = 0; i < tr.length; i++) {
+		    td = tr[i].getElementsByTagName("td")[0];
+		    if (td) {
+		      txtValue = td.textContent || td.innerText;
+		      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+		        tr[i].style.display = "";
+		      } else {
+		        tr[i].style.display = "none";
+		      }
+		    } 
+		  }
+		}
+	</script>
 </body>
 </html>
