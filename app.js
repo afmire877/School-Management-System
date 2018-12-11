@@ -15,6 +15,7 @@ mongoose.connect("mongodb://localhost:27017/school-system");
 // Setting up Schema 
 var studentSchema = new mongoose.Schema({
 	name: String ,
+	image: String,
 	year: Number,
 	class: String,
 	gender: String,
@@ -46,12 +47,11 @@ var Student = mongoose.model('student', studentSchema);
 
 
 
-// Routes 
+// INDEX Routes 
 app.get('/', function( req, res){
 	res.render('pages/dashboard.ejs')
 });
 
-// Student.createIndex( { name: "text" } );
 //Create Route
 
 app.get('/student/new', function(req, res){
@@ -70,11 +70,9 @@ app.get('/students/all', function(req, res){
 		}
 	});
 })
-app.post('/students/all/search', function(req, res){
-	
-	Student.find( { $text: { $search: req.body.search } } )
-});
 
+
+// CREATE Route
 app.post("/student", function(req , res){
 	var name = req.body.name;
 	var year = req.body.year;
@@ -108,9 +106,37 @@ app.post("/student", function(req , res){
 	res.redirect("/");
 });
 
+// SHOW Route
+
+app.get('/students/:id', function(req , res){
+	Student.findById(req.params.id, function(err, student){
+		if(err){
+			console.log(err)
+		}
+		else{
+			res.render('pages/show.ejs', {student : student})
+		}
+	})
+})
+
+// Edit Route
+
+app.get('/student/:id/edit' , function(req, res){
+	Student.findById()
+});
+
+// UPDATE ROUTE
+
+app.put('/student/:id', function(req, res) {
+	Student.findByIdAndUpdate()
+})
 
 
+// DELETE Route 
 
+app.delete('/student/:id/delete', function(req,res){
+	Student.findByIdAndRemove()
+})
 //Listening for Port
 
 app.listen(5000);
