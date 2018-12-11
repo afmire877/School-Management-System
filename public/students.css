@@ -84,7 +84,7 @@ input[id="search"] {
     margin-bottom: 10px;
 }
 
-select {
+select[id="filter"] {
 	font-family: 'Montserrat';
 	float: right;
     padding: 9px;
@@ -125,4 +125,27 @@ select {
 	font-size: 42px;
 	transform: rotate(45deg);
 	cursor: pointer;
+}
+
+.fas {
+	cursor: pointer;
+}
+.fa-trash {
+	color:red;
+}
+
+/*Form inside Modal*/
+
+.modal-container  form {
+	text-align: center;
+	padding: 20px 20px;
+}
+.modal-container input {
+	display: block;
+	padding: 5px;
+	margin: 5px 5px;
+}
+.modal-container img {
+	display: inline;
+	float: right;
 }

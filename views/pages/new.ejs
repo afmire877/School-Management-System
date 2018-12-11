@@ -13,7 +13,7 @@
 			<h2>New Student's Details</h2>
 			<form action="/student" method="POST">
 				<div style="display: none;" >
-					<input type="file" onchange="previewFile()"><br>
+					<input type="file" onchange="previewFile()" accept="image/*"><br>
 					<img src="../placeholder.jpg" height="200" alt="Image preview..." />
 				</div>
 				<div id="student-photo" >
@@ -21,15 +21,15 @@
 					<img src="../placeholder.jpg" height="200" alt="Image preview..." />
 				</div>
 				<div id="studentInfo">
-					<input type="text" name="name" placeholder="Full Name">
-					<input type="number" name="year" placeholder="Year Group">
-					<input type="text" name="classname" placeholder="Class">
+					<input type="text" name="name" placeholder="Full Name" required>
+					<input type="number" name="year" placeholder="Year Group" required>
+					<input type="text" name="classname" placeholder="Class" required>
 
-					<input type="number" name="dateOfBirth" placeholder="Year of Birth">
-					<input type="text" name="neighborhood" placeholder="neighborhood (Area)">
+					<input type="number" name="dateOfBirth" placeholder="Year of Birth" required>
+					<input type="text" name="neighborhood" placeholder="neighborhood (Area)" required>
 					<br>
 					<label for="gender">Gender: </label>
-					<select name="gender">
+					<select name="gender" >
 						<option>Male</option>
 						<option>Female</option>
 					</select>	
@@ -39,12 +39,12 @@
 					<div id="parentInfo">
 						<h2>Parent's Details</h2>
 						<div id="Mother">
-						<input type="text" name="motherName" placeholder="Mother's Full Name">
-						<input type="number" name="motherPhone" placeholder="Mobile Number">
+						<input type="text" name="motherName" placeholder="Mother's Full Name" required>
+						<input type="number" name="motherPhone" placeholder="Mobile Number" required>
 						</div>
 						<div id="father">
 						<input type="text" name="fatherName" placeholder="father's Full Name">
-						<input type="number" name="fatherPhone" placeholder="Mobile Number">
+						<input type="number" name="fatherPhone" placeholder="Mobile Number" required>
 						</div>
 
 
@@ -57,24 +57,24 @@
 	</div>
 	
 
-<script>
-   function previewFile(){
-       var preview = document.querySelector('img'); //selects the query named img
-       var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-       var reader  = new FileReader();
+	<script>
+	function previewFile(){
+	   var preview = document.querySelector('img'); //selects the query named img
+	   var file    = document.querySelector('input[type=file]').files[0]; //sames as here
+	   var reader  = new FileReader();
 
-       reader.onloadend = function () {
-           preview.src = reader.result;
-       }
+	   reader.onloadend = function () {
+	       preview.src = reader.result;
+	   }
 
-       if (file) {
-           reader.readAsDataURL(file); //reads the data as a URL
-       } else {
-           preview.src = "";
-       }
-  }
+	   if (file) {
+	       reader.readAsDataURL(file); //reads the data as a URL
+	   } else {
+	       preview.src = "";
+	   }
+	}
 
-  previewFile();  //calls the function named previewFile()
-  </script>
+	previewFile();  //calls the function named previewFile()
+	</script>
 </body>
 </html>
