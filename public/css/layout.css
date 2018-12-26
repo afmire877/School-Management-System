@@ -40,9 +40,6 @@ nav ul li a {
 	text-decoration:none;
 	color: white;
 }
-ul.dropdown-menu  {
-	display: none;
-}
 
  /*Main Content Area */
 .main{
@@ -53,5 +50,11 @@ ul.dropdown-menu  {
 	margin-left: 30px;
 	margin-right: 30px;
 }
+.dropdown{
+	display: none;
+}
 
+#class-dropdown:hover	{
+	display: block
 
+}

@@ -3,11 +3,50 @@
 <head>
 	<title><%= student.name %></title>
 	<% include ../partials/head.ejs %>
-	<link rel="stylesheet" type="text/css" href="dashboard.css">
+	<link rel="stylesheet" type="text/css" href="../css/show.css">
 </head>
 <body>
 	<% include ../partials/header.ejs %>
-	<h1><%= student.name %></h1>
-
+	<div class="main">
+		<div class="wrapper">
+			<h2><%= student.name %>'s Profile</h2>
+			<div class="container">
+				<div id="personal">
+					<h2>Personal Information</h2>
+					<div>
+						<h5>Name:</h5>
+						<p><%= student.name %></p>
+						<h5>Age:</h5>
+						<% var d = new Date().getFullYear() %>
+						<p><%= d - student.dateOfBirth  %></p>
+						<h5>Date of Birth:</h5>
+						<p><%= student.dateOfBirth %></p>
+						<h5>Class: </h5>
+						<p><%= student.class %></p>
+						<h5>Gender: </h5>
+						<p><%= student.name %></p>
+						<h5>Neighborhood: </h5>
+						<p><%= student.neighborhood %></p>
+					</div>
+				</div>
+				<div id="parent">
+					<h2>Parent Information</h2>
+					<div id="mother">
+						<h5>Mother's Name </h5>
+						<p><%= student.parentInfo.mother.name %></p>
+						<h5>Mother's Mobile Number </h5>
+						<p><%= student.parentInfo.mother.phoneNumber  %></p>
+					</div>
+					<div id="father">
+						<h5>Father's Name </h5>
+						<p><%= student.parentInfo.father.name %></p>
+						<h5>Father's Mobile Number </h5>
+						<p><%= student.parentInfo.father.phoneNumber  %></p>
+					</div>
+					
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
-</html>s
+</html>

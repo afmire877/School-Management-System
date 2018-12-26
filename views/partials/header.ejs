@@ -1,20 +1,31 @@
-	<div class="sidenav">
-		<nav>
-			<ul>
-				<li><a href="/">Dashboard</a></li>
-				<li><a href="/student/all">Students</a></li>
-				<li><a href="#">Classes</a></li>
-				<li><a href="#">Attendance</a></li>
-				<li><a href="">Fees</a></li>
-				<% if(!currentUser){ %>
-					<li><a href="/login">login</a></li>
-				<% }else { %>
-					<li>Logged in as <%= currentUser.username %></li>
-					<li><a href="/logout">logout</a></li>
+<div class="sidenav">
+	<nav>
+		<ul>
+			<li><a href="/"><i class="fas fa-window-maximize"></i> Dashboard</a></li>
+			<li><a href="/student/all"><i class="fas fa-user"></i> Students</a></li>
+			<li><%= classes %></li>
+			<li class="menu" ><i class="fas fa-plus"></i> Classes
+				<ul class="dropdown-menu" >
+					<% for(var i = 0; i <= classes.length -1 ; i++){ %>
+						<li><a href="/class/<%= classes[i] %>"><%= classes[i] %></a></li>
+					<% } %>
+				</ul>
+			</li>
 
-				<% } %>
-				
+			<li><a href="#">Attendance</a></li>
+			<li><a href="">Fees</a></li>
+			<% if(!currentUser){ %>
+				<li><a href="/login">login</a></li>
+			<% }else { %>
+				<li>Logged in as <%= currentUser.username %></li>
+				<li><a href="/logout">logout</a></li>
 
-			</ul>
-		</nav>
-	</div>
+			<% } %>
+			
+
+		</ul>
+	</nav>
+</div>
+<script>
+	
+</script>

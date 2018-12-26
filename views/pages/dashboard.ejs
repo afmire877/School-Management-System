@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Dashboard</title>
-	<link rel="stylesheet" type="text/css" href="dashboard.css">
+	<link rel="stylesheet" type="text/css" href="css/dashboard.css">
 	<% include ../partials/head.ejs %>
 </head>
 <body>
@@ -10,6 +10,20 @@
 
 	<div class="main">
 		<div class="wrapper">
+			<div class="display">
+				<div class="box1 numofstudent">
+					<h3>Number of Students</h3>
+					<h1><%= data.length %></h1>	
+				</div>
+				<div class="box2 numofstudent">
+					<h3>Number of Students</h3>
+					<h1><%= data.length %></h1>	
+				</div>
+				<div class="box3 numofstudent">
+					<h3>Number of Students</h3>
+					<h1><%= data.length %></h1>	
+				</div>
+			</div>
 			<h3><a href="/student/new">Add new Student</a></h3>
 		</div>
 	</div>

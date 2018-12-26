@@ -1,0 +1,14 @@
+@import 'layout.css';
+
+
+.container {
+	display: flex;
+	justify-content: space-around;
+
+}
+#personal, 
+#parent{
+	width: 40%;
+	padding:  6px 15px;
+	box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}

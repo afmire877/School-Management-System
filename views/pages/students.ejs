@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>All Students</title>
-	<link rel="stylesheet" type="text/css" href="../students.css">
+	<link rel="stylesheet" type="text/css" href="../css/students.css">
 	<% include ../partials/head.ejs %>
 </head>
 <body>
@@ -48,7 +48,7 @@
 						<td><%= students[i].parentInfo.mother.phoneNumber %></td>
 						<td><a href="/student/<%= students[i]._id %>/edit"><i class="fas fa-user-edit" ></i></a></td>
 						<form method="POST" action="/student/<%= students[i]._id %>?_method=DELETE">
-						  <td><button type="submit"><i class="fas fa-trash"></i></button></td>
+						  <td><button type="submit"><i class="fas fa-trash" onclick="return confirm('Are you sure you want to delete <%= students[i].name %>?');"></i></button></td>
 						</form>
 						
 					</tr>
@@ -71,19 +71,9 @@
 	<!-- End of Modal -->
 	<script>
 		var close = document.querySelector('.close');
-		var edit = document.getElementsByClassName('fa-user-edit');
+		var edit  = document.getElementsByClassName('fa-user-edit');
 		var modal = document.querySelector('.modal');
-
-		for(var i = 0 ; i <= edit.length -1 ; i++){
-			edit[i].addEventListener('click', function(){
-				modal.style.display = 'flex';
-			});
-		};
-
-		close.addEventListener('click', function(){
-			modal.style.display = 'none';
-		});
-
+		var trash = document.getElementsByClassName('fa-trash');
 
 
 

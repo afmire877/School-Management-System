@@ -3,7 +3,7 @@
 <head>
 	<title>Login</title>
 	<% include ../partials/head.ejs %>
-	<link rel="stylesheet" type="text/css" href="./../login.css">
+	<link rel="stylesheet" type="text/css" href="./../css/login.css">
 </head>
 <body>
 	<div class="main">
@@ -12,11 +12,11 @@
 				<form action="/login" method="post">
 					<div class="input">
 						<label><i class="fas fa-user"></i></label>
-						<input class="login-txt" type="text" name="username" placeholder="Username" />
+						<input class="login-txt" type="text" name="username" placeholder="Username" required="required" />
 					</div>
 					<div class="input">
 						<label><i class="fas fa-lock"></i></label>
-						<input class="login-txt" type="password" placeholder="Password" name="password"/>
+						<input class="login-txt" type="password" placeholder="Password" name="password" required="required" />
 					</div>
 					<div>
 						<input class="btn" type="submit" value="Log In"/>

@@ -10,7 +10,9 @@ const express        = require('express'),
 	  LocalStrategy  = require('passport-local'),
 	  morgan         = require('morgan'),
 	  cookieParser   = require('cookie-parser'),
-	  session        = require('express-session');
+	  session        = require('express-session'),
+	  multer         = require("multer"),
+	  upload         = multer({dest: 'upload/'});
 
 app.use(bodyParser.urlencoded({ extended: true}));
 app.set('view engine', 'ejs');
@@ -20,6 +22,7 @@ app.set('view engine', 'ejs');
 app.use(methodOverride('_method'));
 //Serving Static Files
 app.use(express.static('public'));
+app.use(express.static('upload'));
 
 // Setting up Mongodb Connection
 mongoose.connect("mongodb://localhost:27017/school-system", { useNewUrlParser: true });
@@ -42,12 +45,20 @@ app.use(function(req, res , next) {
 	next();
 });
 
-
+app.use(function(req, res , next) {
+	Student.distinct("class", function(err, classes){
+		res.locals.classes = classes;
+	})
+	next();
+});
 
 // INDEX Routes 
 app.get('/', isLoggedIn, function( req, res){
-	console.log(req.user);
-	res.render('pages/dashboard.ejs');
+
+	Student.find({}, function(err, data){
+		res.render('pages/dashboard.ejs', {data : data});
+	})
+	
 });
 
 //Create Route
@@ -106,7 +117,7 @@ app.post("/student",isLoggedIn, function(req , res){
 // SHOW Route
 
 app.get('/student/:id',isLoggedIn, function(req , res){
-	Student.findById(req.params.id, function(err, student){
+  	Student.findOne({_id : req.params.id }, function(err, student){
 		if(err){
 			console.log(err)
 		}
@@ -114,6 +125,7 @@ app.get('/student/:id',isLoggedIn, function(req , res){
 			res.render('pages/show.ejs', {student : student})
 		}
 	})
+
 })
 
 // Edit Route
@@ -173,6 +185,24 @@ app.delete('/student/:id',isLoggedIn, function(req,res){
 		}
 	})
 })
+
+//==============
+// Classes ROUTES
+//==============
+
+
+app.get('/class/:className', isLoggedIn, function(req, res){
+	var className = req.params.className; 
+	Student.find({ class: className}, function( err, foundStudents){
+		if(err){
+			console.log(err)
+		}else{
+			res.render('pages/students', {students : foundStudents})
+		}
+	})
+})
+
+
 
 //==============
 // AUTH ROUTES
