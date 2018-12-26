@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="../../edit.css">
+	<% include ../partials/head.ejs %>
+</head>
+<body>
+	<% include ../partials/header.ejs %>
+
+	<div class="main">
+		<div class="wrapper">
+			<form action="/student/<%= student._id %>?_method=PUT"  method="POST">
+				<div id="studentInfo">
+					<input type="text" name="name" placeholder="Full Name" value="<%= student.name %>" >
+					<input type="text" name="classname" placeholder="Class" value="<%= student.class %>" required>
+
+					<input type="number" name="dateOfBirth" placeholder="Year of Birth" value="<%= student.dateOfBirth %>" required>
+					<input type="text" name="neighborhood" placeholder="neighborhood (Area)" value="<%= student.neighborhood %>" required>
+					<br>
+					<label for="gender">Gender: </label>
+					<select name="student[gender]" >
+						<option>Male</option>
+						<option>Female</option>
+					</select>	
+			
+				</div>
+					
+					<div id="parentInfo">
+						<h2>Parent's Details</h2>
+						<div id="Mother">
+						<input type="text" name="motherName" placeholder="Mother's Full Name" value="<%= student.parentInfo.mother.name %>" required>
+						<input type="number" name="motherPhone" placeholder="Mobile Number" value="<%= student.parentInfo.mother.phoneNumber %>" required>
+						</div>
+						<div id="father">
+						<input type="text" name="fatherName" placeholder="father's Full Name" value="<%= student.parentInfo.father.name %>">
+						<input type="number" name="fatherPhone" placeholder="Mobile Number"  value="<%= student.parentInfo.father.phoneNumber %>" required >
+						</div>
+
+
+							
+					</div>
+					<button type="submit">Submit</button>
+
+			</form>
+
+		</div>
+	</div>
+	<% include ../partials/footer.ejs %>
+</body>
+</html>
+
+	

@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>New Student</title>
+	<title>New Student</title>	
 	<link rel="stylesheet" type="text/css" href="../new.css">
+
 	<% include ../partials/head.ejs %>
 </head>
 <body>
@@ -12,17 +13,8 @@
 
 			<h2>New Student's Details</h2>
 			<form action="/student" method="POST">
-				<div style="display: none;" >
-					<input type="file" onchange="previewFile()" accept="image/*"><br>
-					<img src="../placeholder.jpg" height="200" alt="Image preview..." />
-				</div>
-				<div id="student-photo" >
-					<input type="file" onchange="previewFile()"><br>
-					<img src="../placeholder.jpg" height="200" alt="Image preview..." />
-				</div>
 				<div id="studentInfo">
 					<input type="text" name="name" placeholder="Full Name" required>
-					<input type="number" name="year" placeholder="Year Group" required>
 					<input type="text" name="classname" placeholder="Class" required>
 
 					<input type="number" name="dateOfBirth" placeholder="Year of Birth" required>

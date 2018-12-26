@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dashboard</title>
+	<link rel="stylesheet" type="text/css" href="register.css">
+	<% include ../partials/head.ejs %>
+</head>
+<body>
+	<% include ../partials/header.ejs %>
+
+	<div class="main">
+		<div class="wrapper">
+			<form action="/register" method="post">
+				<input type="text" name="username" placeholder="username">
+				<input type="password" name="password">
+				<input type="submit" name="submit">
+			</form>
+		</div>
+	</div>
+	<% include ../partials/footer.ejs %>
+</body>
+</html>

@@ -1,0 +1,74 @@
+body {
+	padding:0;
+	margin:0;
+	display: block;
+	font-family: 'Montserrat', sans-serif;
+	background-color: #0202ff8a;
+}
+
+.main{
+	padding: 30px;
+	margin:0 auto;
+	height: 100%;
+	overflow: hidden;
+}
+
+
+h1{
+	font-weight: bold;
+	color: #fff;
+	font-size: 30px;
+}
+h1::after{
+	margin-bottom: 15px;
+	content: '—';
+	display: block;
+}
+
+div[class="login-box"]{
+	width: 280px;
+	margin: auto auto;
+
+}
+.input{
+	width: 30px;
+}
+input[class="login-txt"]{
+	color: white;
+	background: none;
+	border:none;
+	border-bottom: 1px solid white;
+	font-family: 'Montserrat', sans-serif;
+	padding: 6px 3px;
+	margin-bottom: 6px;
+	font-size: 24px;
+}
+.btn{
+	width:70%;
+	background: none;
+	color: white;
+	border: 1px solid white;
+	padding: 4px 4px;
+	margin: 7px 4px;
+
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+i {
+	color:white;
+	font-size: 24px;
+}
+input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: white;
+  opacity: 1; /* Firefox */
+}
+
+input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+}
+
+input::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Login</title>
+	<% include ../partials/head.ejs %>
+	<link rel="stylesheet" type="text/css" href="./../login.css">
+</head>
+<body>
+	<div class="main">
+		<div class="login-box">
+				<h1>Login</h1>
+				<form action="/login" method="post">
+					<div class="input">
+						<label><i class="fas fa-user"></i></label>
+						<input class="login-txt" type="text" name="username" placeholder="Username" />
+					</div>
+					<div class="input">
+						<label><i class="fas fa-lock"></i></label>
+						<input class="login-txt" type="password" placeholder="Password" name="password"/>
+					</div>
+					<div>
+						<input class="btn" type="submit" value="Log In"/>
+					</div>
+				</form>
+			</div>
+	</div>
+
+</body>
+</html>

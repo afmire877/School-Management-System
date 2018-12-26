@@ -14,13 +14,16 @@
 
 			<h1>All Student</h1>
 
-				<input type="text" id="search" onkeyup="myFunction()" placeholder="Search for names..">
-				<select>
-					<option>Name</option>
-					<option>Class</option>
-					<option>Mother's Name</option>
-				</select>
+			<h3><a href="/student/new">Add new Student</a></h3>
+			<!-- Search Section -->
+			<input type="text" id="search" onkeyup="myFunction()" placeholder="Search for names..">
+			<select id="filter">
+				<option>Name</option>
+				<option>Class</option>
+				<option>Mother's Name</option>
+			</select>
 
+			<!-- Student Table -->
 			<table id="myTable">
 				<thead>
 					<tr id="hacker-list">
@@ -30,24 +33,60 @@
 						<th class="yearOfBirth">Year of Birth</th>
 						<th class="MotherName">Mother's Name</th>
 						<th class="MotherNumber">Mother's Number</th>
+						<th></th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
 					<% for(var i = 0; i <= students.length -1 ; i++) { %> 
 					<tr>
-						<td><%= students[i].name %></td>
+						<td><a href="/student/<%= students[i]._id %>"><%= students[i].name %></a></td>
 						<td><%= students[i].gender %></td><td><%= students[i].class %></td>
 						<td><%= students[i].dateOfBirth %></td>
 
 						<td><%= students[i].parentInfo.mother.name %></td>
 						<td><%= students[i].parentInfo.mother.phoneNumber %></td>
+						<td><a href="/student/<%= students[i]._id %>/edit"><i class="fas fa-user-edit" ></i></a></td>
+						<form method="POST" action="/student/<%= students[i]._id %>?_method=DELETE">
+						  <td><button type="submit"><i class="fas fa-trash"></i></button></td>
+						</form>
+						
 					</tr>
 					<% } %>
 				</tbody>
 			</table>
+			<!-- END of Student table -->
+			
 		</div>
 	</div>
+
+	<!-- Edit Modal Pop up -->
+	<div class="modal">
+		<div class="modal-container">
+			<div class="close">+</div>
+			
+		</div>
+	</div>
+
+	<!-- End of Modal -->
 	<script>
+		var close = document.querySelector('.close');
+		var edit = document.getElementsByClassName('fa-user-edit');
+		var modal = document.querySelector('.modal');
+
+		for(var i = 0 ; i <= edit.length -1 ; i++){
+			edit[i].addEventListener('click', function(){
+				modal.style.display = 'flex';
+			});
+		};
+
+		close.addEventListener('click', function(){
+			modal.style.display = 'none';
+		});
+
+
+
+
 	function myFunction() {
 	  // Declare variables 
 	  var input, filter, table, tr, td, i, txtValue, param;

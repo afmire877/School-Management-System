@@ -2,17 +2,19 @@
 		<nav>
 			<ul>
 				<li><a href="/">Dashboard</a></li>
-				<li><a href="/students/all">Students</a></li>
-				<li><a href="">Classes</a></li>
-				<li><a href="">Attendance</a></li>
+				<li><a href="/student/all">Students</a></li>
+				<li><a href="#">Classes</a></li>
+				<li><a href="#">Attendance</a></li>
 				<li><a href="">Fees</a></li>
+				<% if(!currentUser){ %>
+					<li><a href="/login">login</a></li>
+				<% }else { %>
+					<li>Logged in as <%= currentUser.username %></li>
+					<li><a href="/logout">logout</a></li>
+
+				<% } %>
+				
+
 			</ul>
 		</nav>
-	</div>
-
-	<div class="wrap">
-		<div class="loading">
-		<div class="bounceball"></div>
-		<div class="text">NOW LOADING</div>
-		</div>
 	</div>
