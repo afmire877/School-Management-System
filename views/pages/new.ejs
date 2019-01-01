@@ -14,35 +14,64 @@
 			<h2>New Student's Details</h2>
 			<form action="/student" method="POST">
 				<div id="studentInfo">
-					<input type="text" name="name" placeholder="Full Name" required>
-					<input type="text" name="classname" placeholder="Class" required>
-
-					<input type="number" name="dateOfBirth" placeholder="Year of Birth" required>
-					<input type="text" name="neighborhood" placeholder="neighborhood (Area)" required>
-					<br>
-					<label for="gender">Gender: </label>
-					<select name="gender" >
-						<option>Male</option>
-						<option>Female</option>
-					</select>	
-			
-				</div>
-					
-					<div id="parentInfo">
-						<h2>Parent's Details</h2>
-						<div id="Mother">
-						<input type="text" name="motherName" placeholder="Mother's Full Name" required>
-						<input type="number" name="motherPhone" placeholder="Mobile Number" required>
-						</div>
-						<div id="father">
-						<input type="text" name="fatherName" placeholder="father's Full Name">
-						<input type="number" name="fatherPhone" placeholder="Mobile Number" required>
-						</div>
-
-
-							
+					<h4>Student Name</h4>
+					<div class="student-name">
+						<input type="text" name="firstName" placeholder="First Name" required>
+						<input type="text" name="middleName" placeholder="Middle Name" required>
+						<input type="text" name="lastName" placeholder="Last Name" required>
 					</div>
-					<button type="submit">Submit</button>
+					<div class="personal-info">
+						<h4>Student Information</h4>
+						<input type="number" name="dateOfBirth" placeholder="Year of Birth" required>
+						<input type="text" name="neighborhood" placeholder="neighborhood (Area)" required>
+						<label for="gender">Gender: </label>
+						<select name="gender" >
+							<option>Male</option>
+							<option>Female</option>
+						</select>
+					</div>
+					<div class="education-info">
+						<h4>Educational Information</h4>
+						<input type="text" name="classname" placeholder="Class" required>
+						<input type="text" name="previousSchool" placeholder="previous School" required>
+
+					</div>
+					
+
+					<div class="student-contacts">
+						<h4>Contact Details</h4>
+						<input type="number" name="studentmobile"  placeholder="Mobile Number">
+						<input type="email" name="studentemail" placeholder="Email">
+					</div>
+
+					<div id="additional"> 
+						<h4>Additional Information</h4>
+						<textarea name="healthInfo" placeholder="Any Information on Health related issues" id="" cols="30" rows="10"></textarea>
+						<textarea name="additionalInfo" placeholder="Any additional Information" id="" cols="30" rows="10"></textarea>
+					</div>
+				</div>
+					<h2>Parent's Details</h2>
+
+					<div id="parentInfo">
+
+						<div id="Mother">
+							<h5>Mother</h5>
+							<input type="text" name="motherName" placeholder="Mother's Full Name" required>
+							<input type="number" name="motherPhone" placeholder="Mobile Number" required maxlength="10">
+						</div>
+						
+						<div id="father">
+							<h5>Father</h5>
+							<input type="number" name="fatherPhone" placeholder="Mobile Number" required>
+						</div>
+						<div id="guardian">
+							<h5>Guardian</h5>
+							<input type="text" name="guardianName" placeholder="Guardian's Full Name" required>
+							<input type="number" name="guardianPhone" placeholder="Mobile Number" required>
+							<input type="text" name="relationship" placeholder="Relations to the student" required>
+						</div>
+					</div>
+					<button type="submit" class="btn">Submit</button>
 
 			</form>
 		</div>

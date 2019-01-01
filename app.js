@@ -45,16 +45,15 @@ app.use(function(req, res , next) {
 	next();
 });
 
-app.use(function(req, res , next) {
-	Student.distinct("class", function(err, classes){
-		res.locals.classes = classes;
-	})
-	next();
-});
+// app.use(function(req, res , next) {
+// 	Student.distinct("class", function(err, classes){
+// 		res.locals.classes = classes;
+// 	})
+// 	next();
+// });
 
 // INDEX Routes 
 app.get('/', isLoggedIn, function( req, res){
-
 	Student.find({}, function(err, data){
 		res.render('pages/dashboard.ejs', {data : data});
 	})
@@ -82,26 +81,44 @@ app.get('/student/all',isLoggedIn, function(req, res){
 
 // CREATE Route
 app.post("/student",isLoggedIn, function(req , res){
-	var name = req.body.name;
-	var year = req.body.year;
-	var classname = req.body.classname;
-	var gender = req.body.gender;
-	var dateOfBirth = req.body.dateOfBirth;
-	var neighborhood = req.body.neighborhood;
-	var motherName = req.body.motherName;
-	var fatherName = req.body.fatherName;
-	var fatherNumber = req.body.fatherPhone;
-	var motherNumber = req.body.motherPhone;
-	var studentObj = { name: name, class : classname , gender :gender, dateOfBirth : dateOfBirth , neighborhood : neighborhood , parentInfo : {
-		mother : {
-			name: motherName,
-			phoneNumber: motherNumber,
-		},
-		father : {
-			name: fatherName,
-			phoneNumber: fatherNumber,
-		}
-	} };
+	var firstName      = req.body.firstName,
+		middleName     = req.body.middleName,
+		lastName       = req.body.lastName,
+		year           = req.body.year,
+		classname      = req.body.classname,
+		gender         = req.body.gender,
+		mobile         = req.body.studentmobile,
+		email          = req.body.studentemail,
+		dateOfBirth    = req.body.dateOfBirth,
+		neighborhood   = req.body.neighborhood,
+		motherName     = req.body.motherName,
+		fatherName     = req.body.fatherName,
+		fatherNumber   = req.body.fatherPhone,
+		motherNumber   = req.body.motherPhone,
+		guardianName   = req.body.guardianName,
+		guardianNumber = req.body.guardianPhone,
+		relations      = req.body.relationship,
+		previousSchool = req.body.previousSchool,
+		additionalInfo = req.body.additionalInfo,
+		healthInfo     = req.body.healthInfo,
+		studentObj = { firstName: firstName, middleName: middleName, lastName: lastName, class : classname , gender :gender, dateOfBirth : dateOfBirth , neighborhood : neighborhood , 
+			parentInfo : {
+				mother : {
+					name: motherName,
+					phoneNumber: motherNumber,
+				},
+				father : {
+					name: fatherName,
+					phoneNumber: fatherNumber,
+				},
+				Guardian : {
+					name: guardianName,
+					phoneNumber: guardianNumber,
+					relations: relations,
+				}
+			},
+			previousSchool: previousSchool,	healthInfo: healthInfo,
+	additionalInfo: additionalInfo, mobile: mobile, email: email};
 	Student.create(studentObj , function(err , student){
 		if(err){
 			console.log("Error");
@@ -143,26 +160,42 @@ app.get('/student/:id/edit' ,isLoggedIn, function(req, res){
 // UPDATE ROUTE
 
 app.put('/student/:id',isLoggedIn, function(req, res) {
-	var name = req.body.name,
-		year = req.body.year,
-		classname = req.body.classname,
-		gender = req.body.gender,
-		dateOfBirth = req.body.dateOfBirth,
-		neighborhood = req.body.neighborhood,
-		motherName = req.body.motherName,
-		fatherName = req.body.fatherName,
-		fatherNumber = req.body.fatherPhone,
-		motherNumber = req.body.motherPhone,
-		studentObj = { name: name, class : classname , gender :gender, dateOfBirth : dateOfBirth , neighborhood : neighborhood , parentInfo : {
-		mother : {
-			name: motherName,
-			phoneNumber: motherNumber,
-		},
-		father : {
-			name: fatherName,
-			phoneNumber: fatherNumber,
-		}
-	} };
+	var firstName      = req.body.firstName,
+		middleName     = req.body.middleName,
+		lastName       = req.body.lastName,
+		year           = req.body.year,
+		classname      = req.body.classname,
+		gender         = req.body.gender,
+		mobile         = req.body.studentmobile,
+		email          = req.body.studentemail,
+		dateOfBirth    = req.body.dateOfBirth,
+		neighborhood   = req.body.neighborhood,
+		motherName     = req.body.motherName,
+		fatherNumber   = req.body.fatherPhone,
+		motherNumber   = req.body.motherPhone,
+		guardianName   = req.body.guardianName,
+		guardianNumber = req.body.guardianPhone,
+		relations      = req.body.relationship,
+		previousSchool = req.body.previousSchool,
+		additionalInfo = req.body.additionalInfo,
+		healthInfo     = req.body.healthInfo,
+		studentObj     = { firstName: firstName, middleName: middleName, lastName: lastName, class : classname , gender :gender, dateOfBirth : dateOfBirth , neighborhood : neighborhood ,healthInfo: healthInfo,
+	additionalInfo: additionalInfo, previousSchool: previousSchool, mobile : mobile, email: email,
+		parentInfo : {
+			mother : {
+				name: motherName,
+				phoneNumber: motherNumber,
+			},
+			father : {
+				name: fatherName,
+				phoneNumber: fatherNumber,
+			},
+			Guardian : {
+				name: guardianName,
+				phoneNumber: guardianNumber,
+				relations: relations,
+			}
+		}};
 	Student.findOneAndUpdate(req.params.id, studentObj, function(err , updatedstudent){
 		if(err){
 			console.log(err)
