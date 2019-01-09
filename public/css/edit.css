@@ -1,1 +1,63 @@
 @import "layout.css";
+
+* {
+	font-family: 'Montserrat', sans-serif;
+}
+/*=======================*/
+/*REMOVING DEFULTS*/
+/*=========================*/
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input:focus{ outline:none; }
+
+
+
+
+/*===================*/
+/*INPUTS */
+/*===================*/
+
+input{
+	font-size:18px;
+	padding:10px 10px 10px 5px;
+	margin: 5px;
+	display:block;
+	width:300px;
+	border:none;
+	border-bottom:1px solid #1565C0;
+}
+
+
+.btn {
+	padding: 10px;
+	border: 1px solid #1565C0;
+	background: white;
+	border-radius: 6px;
+}
+select {	  
+	font-family: 'Montserrat';
+    padding: 9px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+select option {
+	font-family: 'Montserrat';
+    padding: 9px;
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+#parentInfo {
+	display: flex;
+
+
+}
+.student-name {
+	display: flex;
+}
+
