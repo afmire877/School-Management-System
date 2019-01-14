@@ -27,7 +27,8 @@
 			<table id="myTable">
 				<thead>
 					<tr id="hacker-list">
-						<th class="name">Name</th>
+						<th class="name">First Name</th>
+						<th class="Surname">Surname</th>
 						<th class="gender">Gender</td>
 						<th class="class">Class</th>
 						<th class="yearOfBirth">Year of Birth</th>
@@ -40,7 +41,8 @@
 				<tbody>
 					<% for(var i = 0; i <= students.length -1 ; i++) { %> 
 					<tr>
-						<td><a href="/student/<%= students[i]._id %>"><%= students[i].name %></a></td>
+						<td><a href="/student/<%= students[i]._id %>"><%= students[i].firstName %></a></td>
+						<td><%= students[i].lastName %></td>
 						<td><%= students[i].gender %></td><td><%= students[i].class %></td>
 						<td><%= students[i].dateOfBirth %></td>
 

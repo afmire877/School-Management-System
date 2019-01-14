@@ -23,7 +23,7 @@ var studentSchema = new mongoose.Schema({
 			name: String,
 			phoneNumber: Number
 		},
-		Guardian : {
+		guardian : {
 			name: String,
 			phoneNumber: Number,
 			relations: String,

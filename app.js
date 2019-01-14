@@ -111,7 +111,7 @@ app.post("/student",isLoggedIn, function(req , res){
 					name: fatherName,
 					phoneNumber: fatherNumber,
 				},
-				Guardian : {
+				guardian : {
 					name: guardianName,
 					phoneNumber: guardianNumber,
 					relations: relations,
@@ -190,7 +190,7 @@ app.put('/student/:id',isLoggedIn, function(req, res) {
 				name: fatherName,
 				phoneNumber: fatherNumber,
 			},
-			Guardian : {
+			guardian : {
 				name: guardianName,
 				phoneNumber: guardianNumber,
 				relations: relations,
