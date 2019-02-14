@@ -1,3 +1,4 @@
+
 const express        = require('express'),
 	  flash          = require('connect-flash'),
 	  methodOverride = require('method-override'),
@@ -282,3 +283,83 @@ function isLoggedIn(req, res , next){
 
 app.listen(5000);
 console.log('The Magic port is 5000');
+
+
+
+db.class12A.insertOne({
+	firstName: "Jimcaalec",
+	middleName: "tyny",
+	lastName: "tywaan",
+	year: "12",
+	mobile: 1231697,
+	email: "mireahmed@aigml.com",
+	gender: "fenale",
+	dateOfBirth: 1990,
+	neighborhood: "France",
+	parentInfo : {
+		mother : {
+			name: "Layla ",
+			phoneNumber: 0634444444
+		},
+		father : {
+			name: "Hadiid",
+			phoneNumber: 2342342
+		},
+		guardian : {
+			name: "Jimcaale",
+			phoneNumber: 7832683,
+			relations: "Dad",
+		}
+	},
+	attendance : {},
+	fees : {},
+})
+{
+        "parentInfo" : {
+                "mother" : {
+                        "name" : "Saynab Xasan ",
+                        "phoneNumber" : 633663838
+                },
+                "father" : {
+                        "phoneNumber" : 314252523432
+                },
+                "guardian" : {
+                        "name" : "Jamac ",
+                        "phoneNumber" : 893942894,
+                        "relations" : "uncle"
+                }
+        },
+        "firstName" : "Ahmed",
+        "middleName" : "fuad ",
+        "lastName" : "Mire",
+        "class" : "12",
+        "gender" : "Male",
+        "dateOfBirth" : 1998,
+        "neighborhood" : "Telesom",
+        "previousSchool" : "Darul ULoom",
+        "mobile" : 7490651935,
+        "email" : "afmire877@gmail.com",
+        "__v" : 0
+}
+
+
+db.attendance.insertOne({ studentId: ObjectId("5c4eb83d90483499a6b96e97") , 
+	year:2017, 
+	monthStart: "August",
+	biology: {
+ 
+		attendance: [
+		{
+			month: "January", 
+			days:[1,-1,0,1,1,1,1,1,1,1,1,1,1]
+		},
+		{
+			month: "Feb", days:[1,-1,0,1,1,1,1,1,1,1,1,1,1]
+		},
+		{
+			month: "march", days:[1,-1,0,1,1,1,1,1,1,1,1,1,1]
+		}
+
+		]
+	}
+	})
