@@ -23,6 +23,7 @@ app.use(methodOverride('_method'));
 //Serving Static Files
 app.use(express.static('public'));
 app.use(express.static('upload'));
+app.set('port', process.env.PORT )
 
 // Setting up Mongodb Connection
 mongoose.connect("mongodb://ahmed:password1@ds255005.mlab.com:55005/heroku_sc1hqhrc", { useNewUrlParser: true });
@@ -45,12 +46,6 @@ app.use(function(req, res , next) {
 	next();
 });
 
-// app.use(function(req, res , next) {
-// 	Student.distinct("class", function(err, classes){
-// 		res.locals.classes = classes;
-// 	})
-// 	next();
-// });
 
 // INDEX Routes 
 app.get('/', isLoggedIn, function( req, res){
@@ -282,7 +277,7 @@ function isLoggedIn(req, res , next){
 };
 //Listening for Port
 
-app.listen(5000);
+app.listen(process.env.PORT );
 console.log('The Magic port is 5000');
 
 
