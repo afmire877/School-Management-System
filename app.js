@@ -1,4 +1,3 @@
-
 const express        = require('express'),
 	  flash          = require('connect-flash'),
 	  methodOverride = require('method-override'),
@@ -26,7 +25,7 @@ app.use(express.static('public'));
 app.use(express.static('upload'));
 
 // Setting up Mongodb Connection
-mongoose.connect("mongodb://localhost:27017/school-system", { useNewUrlParser: true });
+mongoose.connect("mongodb://ahmed:password1@ds255005.mlab.com:55005/heroku_sc1hqhrc", { useNewUrlParser: true });
 
 // Setting Up passport
 app.use(require('express-session')({
